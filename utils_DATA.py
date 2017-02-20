@@ -292,6 +292,7 @@ def get_ptb_stream(which_set, batch_size, length, drop_prob_states, drop_prob_ce
                    augment=True):
     
     dataset = PTB(which_set, length=length, augment=augment)
+    import ipdb; ipdb.set_trace()
     if num_examples is None or num_examples > dataset.num_examples:
         num_examples = dataset.num_examples
     stream = fuel.streams.DataStream.default_stream(
@@ -301,6 +302,19 @@ def get_ptb_stream(which_set, batch_size, length, drop_prob_states, drop_prob_ce
                         for_evaluation)
     ds.sources = ('features',  'drops_states', 'drops_cells', 'drops_igates')#'outputs',
     return ds
+
+def get_noised_stream(which_set, batch_size, length, drop_prob_states, drop_prob_cells, drop_prob_igates,
+                      hidden_dim, X_noise, Y_noise, rng, for_evaluation, num_examples=None, augment=True):
+    dataset = PTB(which_set, length=length, augment=augment)
+    if num_examples is None or num_examples > dataset.num_examples:
+        num_examples = dataset.num_examples
+    num_X_noised = int(num_examples * X_noise) 
+    num_Y_noised = int(num_examples * Y_noise)
+    stream = fuel.streams.DataStream.default_stream(
+        noised_dataset,
+        iteration_scheme=fuel.schemes.ShuffledScheme(num_examples, batch_size))
+    ds = SampleDropsPTB(stream, drop_prob_states, drop_prob_cells, drop_prob_igates, hidden_dim, for_evaluation)
+    ds.sources = ('features', 'drops_states', 'drops_cells', 'drops_igates')
 
 def get_static_mask_ptb_stream(which_set, batch_size, length, drop_prob_states, drop_prob_cells, drop_prob_igates,
                    hidden_dim, for_evaluation, num_examples=None,

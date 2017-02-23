@@ -231,6 +231,8 @@ def parse_args():
     parser.add_argument('--batch_size', default=32)
     parser.add_argument('--X_noise', type=float, default=0, help="e.g. 0.5 means 50% of input examples will be noise")
     parser.add_argument('--Y_noise', type=float, default=0, help="e.g. 0.5 means 50% of labels  will be noise")
+    parser.add_argument('--X_noise_type', type=str, default='char', help="options are seq and char")
+    parser.add_argument('--Y_noise_type', type=str, default='char', help="options are seq and char")
     return parser.parse_args()
 
 
@@ -238,7 +240,7 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
           seed, pretrain_alignment, uniform_alignment, dropout,
           beam_search, test_cost, experiment_path, window_features,
           features, pool_size, maximum_frames, initialization, weight_noise,
-          to_watch, patience, plot, write_predictions, static_mask, X_noise, Y_noise,
+          to_watch, patience, plot, write_predictions, static_mask, X_noise, Y_noise, X_noise_type, Y_noise_type,
           drop_prob, drop_prob_states, drop_prob_cells, drop_prob_igates, ogates_zoneout, batch_size,
           stoch_depth, share_mask, gaussian_drop, rnn_type, num_layers, norm_cost_coeff, penalty, seq_len, input_drop, augment,
           **kwargs):
@@ -341,18 +343,18 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
             'train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, True, augment=augment)
         dev_stream = get_static_mask_ptb_stream(
             'valid', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, True, augment=augment)
-    #else:
-    #    train_stream = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, False, augment=augment)
-    #    train_stream_evaluation = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, True, augment=augment)
-    #    dev_stream = get_noised_stream('valid', batch_size, seq_len, drop_prob_states, drop_prob_ceslls, drop_prob_igates, state_dim, X_noise, Y_noise, rng, True, augment=augment)
-    #turn back on for sanity check
     else:
-        train_stream = get_ptb_stream(
-            'train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, False, augment=augment)
-        train_stream_evaluation = get_ptb_stream(
-            'train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, True, augment=augment)
-        dev_stream = get_ptb_stream(
-            'valid', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, True, augment=augment)
+        train_stream = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, False, augment=augment)
+        train_stream_evaluation = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, True, augment=augment)
+        dev_stream = get_noised_stream('valid', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, True, augment=augment)
+    #turn back on for sanity check
+    #else:
+       #train_stream = get_ptb_stream(
+           #'train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, False, augment=augment)
+       #train_stream_evaluation = get_ptb_stream(
+           #'train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, True, augment=augment)
+       #dev_stream = get_ptb_stream(
+           #'valid', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, True, augment=augment)
 
     
     #train_dataset = Timit('train', features=features)
@@ -403,7 +405,9 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
     print '.. building model'
     
     x = T.tensor3('features', dtype=floatX)
-    x, y = x[:-1], x[1:] #T.lmatrix('outputs')# phonemes')
+    x = x[:-1]
+    y = T.tensor3('targets', dtype=floatX)
+    y = y[1:]
     drops_states = T.tensor3('drops_states')
     drops_cells = T.tensor3('drops_cells')
     drops_igates = T.tensor3('drops_igates')
@@ -486,6 +490,11 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
     
     # cost = CategoricalCrossEntropy().apply(y.flatten().astype('int64'), y_hat)
 
+    def accuracy_lastaxes(yhat, y):
+        # for sequence of distributions/targets
+        return (T.eq(T.argmax(y, axis=-1), T.argmax(yhat, axis=-1))).mean()
+
+
     def crossentropy_lastaxes(yhat, y):
         # for sequence of distributions/targets
         return -(y * T.log(yhat)).sum(axis=yhat.ndim - 1)
@@ -498,6 +507,8 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
     cross_entropies = crossentropy_lastaxes(yhat, y)
     cross_entropy = cross_entropies.mean().copy(name="cross_entropy")
     cost = cross_entropy.copy(name="cost")
+    accu = accuracy_lastaxes(yhat, y)
+    acc= accu.copy(name="acc")
 
 
     batch_cost = cost.copy(name='batch_cost')
@@ -597,7 +608,7 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
     algorithm = GradientDescent(step_rule=step_rule, cost=cost_train,
                                 parameters=cg_train.parameters)
 
-    observed_vars = [cost_train,
+    observed_vars = [cost_train, acc,
                      cost_train_monitor, train_cost_per_character,
                      aggregation.mean(algorithm.total_gradient_norm)]
     # parameters = model.get_parameter_dict()
@@ -610,7 +621,7 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
         prefix="train", after_epoch=True)
 
     dev_monitor = DataStreamMonitoring(
-        variables=[nll_cost, bpc],
+        variables=[nll_cost, bpc, acc],
         data_stream=dev_stream, prefix="dev"
     )
     #train_ctc_monitor = CTCMonitoring(

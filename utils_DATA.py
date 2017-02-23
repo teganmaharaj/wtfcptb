@@ -157,6 +157,100 @@ def get_data(which_set):
 
 
 class PTB(fuel.datasets.Dataset):
+    provides_sources = ('features','targets')
+    example_iteration_scheme = None
+
+    def __init__(self, which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, length, augment=False):
+        self.which_set = which_set
+        self.length = length
+        self.augment = augment
+        #self.data = get_data(which_set)
+        self.X_noise = X_noise
+        self.Y_noise = Y_noise
+        self.rng = rng
+        self.X_noise_type = X_noise_type 
+        self.Y_noise_type = Y_noise_type 
+        if self.augment:
+            print "too much random! not doing augmentation."
+            # -1 so we have one self.length worth of room for augmentation
+            #self.num_examples -= 1
+
+
+        # ADDING NOISE
+        x = get_data(which_set)
+        y = get_data(which_set)
+        data_mean = x.mean()
+        data_stdv = x.std()
+        self.num_examples = int(len(x) / self.length)
+        x = x[:self.num_examples * self.length]
+        y = y[:self.num_examples * self.length]
+        data_len = len(x)
+        oh_dim = x.shape[1]
+        if self.Y_noise > 0.0:
+            rand_Y_one_hots = np.eye(oh_dim)[rng.randint(oh_dim, size=data_len)]
+            if Y_noise_type == 'seq':
+                y = y.reshape(self.num_examples, self.length, oh_dim)
+                rand_Y_one_hots = rand_Y_one_hots.reshape(self.num_examples, self.length, oh_dim)
+                num_y_noised = int(self.Y_noise*self.num_examples)
+                y_noise_mask = np.zeros(self.num_examples)
+                y_noise_mask[:num_y_noised] = 1
+                y_noise_mask = y_noise_mask[rng.permutation(self.num_examples)].astype(bool)
+                y[y_noise_mask] = rand_Y_one_hots[y_noise_mask]
+            elif Y_noise_type == 'char':
+                num_y_noised = int(self.Y_noise*data_len)
+                y_noise_mask = np.zeros(data_len)
+                y_noise_mask[:num_y_noised] = 1
+                y_noise_mask = y_noise_mask[rng.permutation(data_len)].astype(bool)
+                y[y_noise_mask] = rand_Y_one_hots[y_noise_mask]
+                y = y.reshape(self.num_examples, self.length, oh_dim)
+            else:
+               pass
+        else:
+            y = y.reshape(self.num_examples, self.length, oh_dim)
+        if self.X_noise > 0.0:
+            rand_X_one_hots = np.eye(oh_dim)[rng.randint(oh_dim, size=data_len)]
+            if X_noise_type == 'seq':
+                x = x.reshape(self.num_examples, self.length, oh_dim)
+                rand_X_one_hots = rand_X_one_hots.reshape(self.num_examples, self.length, oh_dim)
+                num_x_noised = int(self.X_noise*self.num_examples)
+                x_noise_mask = np.zeros(self.num_examples)
+                x_noise_mask[:num_x_noised] = 1
+                x_noise_mask = x_noise_mask[rng.permutation(self.num_examples)].astype(bool)
+                x[x_noise_mask] = rand_X_one_hots[x_noise_mask]
+            elif Y_noise_type == 'char':
+                num_x_noised = int(self.X_noise*data_len)
+                x_noise_mask = np.zeros(data_len)
+                x_noise_mask[:num_x_noised] = 1
+                x_noise_mask = x_noise_mask[rng.permutation(data_len)].astype(bool)
+                x[x_noise_mask] = rand_X_one_hots[x_noise_mask]
+                x = x.reshape(self.num_examples, self.length, oh_dim)
+            else:
+                print "derp"
+        else:
+            x = x.reshape(self.num_examples, self.length, oh_dim)
+        self.data = (x,y)
+
+        super(PTB, self).__init__()
+
+    def open(self):
+        # reshape to nonoverlapping examples
+        #data = (data[:self.num_examples * self.length]
+        #        .reshape((self.num_examples, self.length, self.data.shape[1])))
+        # return the data so we will get it as the "state" argument to get_data
+        #import ipdb; ipdb.set_trace()
+        return self.data
+
+    def get_data(self, state, request):
+        #if isinstance(request, (tuple, list)):
+        #    request = np.array(request, dtype=np.int64)
+        #    import ipdb; ipdb.set_trace()
+        #    return (state.take(request, 0),)
+        #import ipdb; ipdb.set_trace()
+        #return (state[request],)
+        return (self.data[0][request], self.data[1][request])
+        #return self.filter_sources(data)
+
+class oldPTB(fuel.datasets.Dataset):
     provides_sources = ('features',)
     example_iteration_scheme = None
 
@@ -164,12 +258,12 @@ class PTB(fuel.datasets.Dataset):
         self.which_set = which_set
         self.length = length
         self.augment = augment
-        self.data = get_data(which_set)
+        self.data = get_data(which_set) #(5059550,50)
         self.num_examples = int(len(self.data) / self.length)
         if self.augment:
             # -1 so we have one self.length worth of room for augmentation
             self.num_examples -= 1
-        super(PTB, self).__init__()
+        super(oldPTB, self).__init__()
 
     def open(self):
         offset = 0
@@ -183,14 +277,13 @@ class PTB(fuel.datasets.Dataset):
         data = (data[:self.num_examples * self.length]
                 .reshape((self.num_examples, self.length, self.data.shape[1])))
         # return the data so we will get it as the "state" argument to get_data
-        return data
+        return data #(50594,100,50)
 
     def get_data(self, state, request):
         if isinstance(request, (tuple, list)):
             request = np.array(request, dtype=np.int64)
             return (state.take(request, 0),)
-        return (state[request],)
-
+        return (state[request],) #(32,100,50)
 
 class SampleDropsPTB(Transformer):
     def __init__(self, data_stream, drop_prob_states, drop_prob_cells, drop_prob_igates, hidden_dim,
@@ -231,6 +324,51 @@ class SampleDropsPTB(Transformer):
         transformed_data.append(drops_igates.astype(floatX))
         return transformed_data
 
+class SampleDropsPTBnoised(Transformer):
+    def __init__(self, data_stream, drop_prob_states, drop_prob_cells, drop_prob_igates, hidden_dim,
+                 is_for_test, **kwargs):
+        super(SampleDropsPTBnoised, self).__init__(
+            data_stream, **kwargs)
+        self.drop_prob_states = drop_prob_states
+        self.drop_prob_cells = drop_prob_cells
+        self.drop_prob_igates = drop_prob_igates
+        self.hidden_dim = hidden_dim
+        self.is_for_test = is_for_test
+        self.produces_examples = False
+
+    def get_data(self, request=None):
+        data = next(self.child_epoch_iterator)
+        transformed_data = []
+        data_x = data[0]
+        data_y = data[1]
+        #import ipdb; ipdb.set_trace()
+        # Now it is: T x B x F
+        #transformed_data.append(np.swapaxes(data_x[0], 0, 1))#[:-1])
+        #transformed_data.append(np.swapaxes(data_y[0], 0, 1))#[:-1])
+        transformed_data.append(np.swapaxes(data_x, 0, 1))#[:-1])
+        transformed_data.append(np.swapaxes(data_y, 0, 1))#[:-1])
+        #transformed_data.append(np.swapaxes(data[0], 0, 1)[1:])
+        T, B, _ = transformed_data[0].shape
+        if self.is_for_test:
+            drops_states = np.ones((T, B, self.hidden_dim)) * self.drop_prob_states
+        else:
+            drops_states = np.random.binomial(n=1, p=self.drop_prob_states,
+                                       size=(T, B, self.hidden_dim))
+        if self.is_for_test:
+            drops_cells = np.ones((T, B, self.hidden_dim)) * self.drop_prob_cells
+        else:
+            drops_cells = np.random.binomial(n=1, p=self.drop_prob_cells,
+                                       size=(T, B, self.hidden_dim))
+        if self.is_for_test:
+            drops_igates = np.ones((T, B, self.hidden_dim)) * self.drop_prob_igates
+        else:
+            drops_igates = np.random.binomial(n=1, p=self.drop_prob_igates,
+                                       size=(T, B, self.hidden_dim))
+        transformed_data.append(drops_states.astype(floatX))
+        transformed_data.append(drops_cells.astype(floatX))
+        transformed_data.append(drops_igates.astype(floatX))
+        return transformed_data
+    
 class Sample_static_mask_DropsPTB(Transformer):
     def __init__(self, data_stream, drop_prob_states, drop_prob_cells, drop_prob_igates, hidden_dim,
                  is_for_test, seq_len, batch_size, **kwargs):
@@ -291,8 +429,8 @@ def get_ptb_stream(which_set, batch_size, length, drop_prob_states, drop_prob_ce
                    hidden_dim, for_evaluation, num_examples=None,
                    augment=True):
     
-    dataset = PTB(which_set, length=length, augment=augment)
-    import ipdb; ipdb.set_trace()
+    dataset = oldPTB(which_set, length=length, augment=augment)
+    #import ipdb; ipdb.set_trace()
     if num_examples is None or num_examples > dataset.num_examples:
         num_examples = dataset.num_examples
     stream = fuel.streams.DataStream.default_stream(
@@ -300,21 +438,20 @@ def get_ptb_stream(which_set, batch_size, length, drop_prob_states, drop_prob_ce
         iteration_scheme=fuel.schemes.ShuffledScheme(num_examples, batch_size))
     ds = SampleDropsPTB(stream, drop_prob_states, drop_prob_cells, drop_prob_igates, hidden_dim,
                         for_evaluation)
-    ds.sources = ('features',  'drops_states', 'drops_cells', 'drops_igates')#'outputs',
+    ds.sources = ('features', 'drops_states', 'drops_cells', 'drops_igates')#'outputs',
     return ds
 
 def get_noised_stream(which_set, batch_size, length, drop_prob_states, drop_prob_cells, drop_prob_igates,
-                      hidden_dim, X_noise, Y_noise, rng, for_evaluation, num_examples=None, augment=True):
-    dataset = PTB(which_set, length=length, augment=augment)
-    if num_examples is None or num_examples > dataset.num_examples:
-        num_examples = dataset.num_examples
-    num_X_noised = int(num_examples * X_noise) 
-    num_Y_noised = int(num_examples * Y_noise)
+                      hidden_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, for_evaluation, num_examples=None, augment=True):
+    noised_dataset = PTB(which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, length=length, augment=augment)
+    if num_examples is None or num_examples > noised_dataset.num_examples:
+        num_examples = noised_dataset.num_examples
     stream = fuel.streams.DataStream.default_stream(
         noised_dataset,
         iteration_scheme=fuel.schemes.ShuffledScheme(num_examples, batch_size))
-    ds = SampleDropsPTB(stream, drop_prob_states, drop_prob_cells, drop_prob_igates, hidden_dim, for_evaluation)
-    ds.sources = ('features', 'drops_states', 'drops_cells', 'drops_igates')
+    ds = SampleDropsPTBnoised(stream, drop_prob_states, drop_prob_cells, drop_prob_igates, hidden_dim, for_evaluation)
+    ds.sources = ('features', 'targets', 'drops_states', 'drops_cells', 'drops_igates')
+    return ds
 
 def get_static_mask_ptb_stream(which_set, batch_size, length, drop_prob_states, drop_prob_cells, drop_prob_igates,
                    hidden_dim, for_evaluation, num_examples=None,

@@ -346,9 +346,9 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
         dev_stream = get_static_mask_ptb_stream(
             'valid', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, True, augment=augment)
     else:
-        train_stream = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, burnin, percent_of_data, False, augment=augment)
-        train_stream_evaluation = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, burnin, percent_of_data, True, augment=augment)
-        dev_stream = get_noised_stream('valid', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, burnin, percent_of_data True, augment=augment)
+        train_stream = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, False, augment=augment)
+        train_stream_evaluation = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, True, augment=augment)
+        dev_stream = get_noised_stream('valid', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data True, augment=augment)
     #turn back on for sanity check
     #else:
        #train_stream = get_ptb_stream(
@@ -496,6 +496,9 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
         # for sequence of distributions/targets
         return (T.eq(T.argmax(y, axis=-1), T.argmax(yhat, axis=-1))).mean()
 
+    def accuracy_timesteps(yhat, y):
+        # to monitor per-timestep
+        return (T.eq(T.argmax(y, axis=-1), T.argmax(yhat, axis=-1))).mean(axis=-1)
 
     def crossentropy_lastaxes(yhat, y):
         # for sequence of distributions/targets
@@ -507,11 +510,13 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
 
     yhat = softmax_lastaxis(y_hat_pre_softmax)
     cross_entropies = crossentropy_lastaxes(yhat, y)
+    costs = cross_entropies.copy(name="costs")
     cross_entropy = cross_entropies.mean().copy(name="cross_entropy")
     cost = cross_entropy.copy(name="cost")
     accu = accuracy_lastaxes(yhat, y)
     acc= accu.copy(name="acc")
-
+    accuracies = accuracy_timesteps(yhat, y)
+    accs = accuracies.copy(name="accs")
 
     batch_cost = cost.copy(name='batch_cost')
     nll_cost = cost.copy(name='nll_cost')
@@ -610,7 +615,7 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
     algorithm = GradientDescent(step_rule=step_rule, cost=cost_train,
                                 parameters=cg_train.parameters)
 
-    observed_vars = [cost_train, acc,
+    observed_vars = [cost_train, acc, costs, accs,
                      cost_train_monitor, train_cost_per_character,
                      aggregation.mean(algorithm.total_gradient_norm)]
     # parameters = model.get_parameter_dict()
@@ -623,7 +628,7 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
         prefix="train", after_epoch=True)
 
     dev_monitor = DataStreamMonitoring(
-        variables=[nll_cost, bpc, acc],
+        variables=[nll_cost, bpc, acc, costs, accs],
         data_stream=dev_stream, prefix="dev"
     )
     #train_ctc_monitor = CTCMonitoring(

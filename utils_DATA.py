@@ -160,7 +160,7 @@ class PTB(fuel.datasets.Dataset):
     provides_sources = ('features','targets')
     example_iteration_scheme = None
 
-    def __init__(self, which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, length, augment=False):
+    def __init__(self, which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, length, augment=False):
         self.which_set = which_set
         self.length = length
         self.augment = augment
@@ -181,7 +181,8 @@ class PTB(fuel.datasets.Dataset):
         y = get_data(which_set)
         data_mean = x.mean()
         data_stdv = x.std()
-        self.num_examples = int(len(x) / self.length)
+        num_examples = int(len(x) / self.length)
+        self.num_examples = int(num_examples * (float(percent_of_data)/100))
         x = x[:self.num_examples * self.length]
         y = y[:self.num_examples * self.length]
         data_len = len(x)
@@ -443,7 +444,7 @@ def get_ptb_stream(which_set, batch_size, length, drop_prob_states, drop_prob_ce
 
 def get_noised_stream(which_set, batch_size, length, drop_prob_states, drop_prob_cells, drop_prob_igates,
                       hidden_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, for_evaluation, num_examples=None, augment=True):
-    noised_dataset = PTB(which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, length=length, augment=augment)
+    noised_dataset = PTB(which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, length=length, augment=augment)
     if num_examples is None or num_examples > noised_dataset.num_examples:
         num_examples = noised_dataset.num_examples
     stream = fuel.streams.DataStream.default_stream(

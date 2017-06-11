@@ -24,6 +24,7 @@ class SaveParams(SimpleExtension):
         super(SaveParams, self).__init__(**kwargs)
         self.early_stop_var = early_stop_var
         self.save_path = save_path
+        self.epoch_count = 0
         params_dicts = model.get_parameter_dict()
         self.params_names = params_dicts.keys()
         self.params_values = params_dicts.values()
@@ -37,8 +38,9 @@ class SaveParams(SimpleExtension):
         to_save = {}
         for p_name, p_value in zip(self.params_names, self.params_values):
             to_save[p_name] = p_value.get_value()
-        path = self.save_path + '/trained_params'
+        path = self.save_path + str(self.epoch_count)+'/trained_params'
         np.savez_compressed(path, **to_save)
+        self.epoch_count += 1
 
     def do(self, which_callback, *args):
         val = self.main_loop.log.current_row[self.early_stop_var]

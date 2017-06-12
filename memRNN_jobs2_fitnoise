@@ -1,0 +1,13 @@
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --state_dim=1000 --learning_rate=1e- --X_noise=1
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --state_dim=1000 --X_noise=1
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --state_dim=2000 --X_noise=1
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --state_dim=500 --X_noise=1 --X_noise_type=seq
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --state_dim=1000 --X_noise=1 --X_noise_type=seq
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --state_dim=2000 --X_noise=1 --X_noise_type=seq
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --state_dim=500 --Y_noise=1
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --state_dim=1000 --Y_noise=1
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --state_dim=2000 --Y_noise=1
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --state_dim=500 --Y_noise=1 --Y_noise_type=seq
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --state_dim=1000 --Y_noise=1 --Y_noise_type=seq
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --state_dim=2000 --Y_noise=1 --Y_noise_type=seq
+

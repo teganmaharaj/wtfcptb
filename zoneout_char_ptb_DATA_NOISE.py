@@ -522,9 +522,6 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
     nll_cost = cost.copy(name='nll_cost')
     bpc = (nll_cost/np.log(2.0)).copy(name='bpr')
 
-    #nll_cost = aggregation.mean(batch_cost, batch_size).copy(name='nll_cost')
-    
-    
     cost_monitor = aggregation.mean(
         batch_cost, batch_size).copy(name='sequence_cost_monitor')
     cost_per_character = aggregation.mean(
@@ -615,7 +612,7 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
     algorithm = GradientDescent(step_rule=step_rule, cost=cost_train,
                                 parameters=cg_train.parameters)
 
-    observed_vars = [cost_train, acc, accs,# costs, accs,
+    observed_vars = [cost_train, acc, accs, costs,
                      cost_train_monitor, train_cost_per_character,
                      aggregation.mean(algorithm.total_gradient_norm)]
     # parameters = model.get_parameter_dict()
@@ -628,7 +625,7 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
         prefix="train", after_epoch=True)
 
     dev_monitor = DataStreamMonitoring(
-        variables=[nll_cost, bpc, acc, accs],#, costs, accs],
+        variables=[nll_cost, bpc, acc, accs, costs],
         data_stream=dev_stream, prefix="dev"
     )
     #train_ctc_monitor = CTCMonitoring(

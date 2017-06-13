@@ -186,6 +186,7 @@ class PTB(fuel.datasets.Dataset):
         x = x[:self.num_examples * self.length]
         y = y[:self.num_examples * self.length]
         data_len = len(x)
+        print "data length: ", data_len 
         oh_dim = x.shape[1]
         if self.Y_noise > 0.0:
             rand_Y_one_hots = np.eye(oh_dim)[rng.randint(oh_dim, size=data_len)]
@@ -443,7 +444,7 @@ def get_ptb_stream(which_set, batch_size, length, drop_prob_states, drop_prob_ce
     return ds
 
 def get_noised_stream(which_set, batch_size, length, drop_prob_states, drop_prob_cells, drop_prob_igates,
-                      hidden_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, for_evaluation, num_examples=None, augment=True):
+                      hidden_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, for_evaluation, num_examples=None, augment=True):
     noised_dataset = PTB(which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, length=length, augment=augment)
     if num_examples is None or num_examples > noised_dataset.num_examples:
         num_examples = noised_dataset.num_examples

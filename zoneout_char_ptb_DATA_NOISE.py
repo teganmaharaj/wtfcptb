@@ -615,7 +615,7 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
     algorithm = GradientDescent(step_rule=step_rule, cost=cost_train,
                                 parameters=cg_train.parameters)
 
-    observed_vars = [cost_train, acc, costs, accs,
+    observed_vars = [cost_train, acc, accs,# costs, accs,
                      cost_train_monitor, train_cost_per_character,
                      aggregation.mean(algorithm.total_gradient_norm)]
     # parameters = model.get_parameter_dict()
@@ -628,7 +628,7 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
         prefix="train", after_epoch=True)
 
     dev_monitor = DataStreamMonitoring(
-        variables=[nll_cost, bpc, acc, costs, accs],
+        variables=[nll_cost, bpc, acc, accs],#, costs, accs],
         data_stream=dev_stream, prefix="dev"
     )
     #train_ctc_monitor = CTCMonitoring(
@@ -710,7 +710,7 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
 
     extensions.append(SaveParams('dev_nll_cost', model, experiment_path,
                                  every_n_epochs=1))
-    extensions.append(SaveLog(every_n_epochs=1))
+    extensions.append(SaveLog(every_n_epochs=1, before_first_epoch=True))
     #extensions.append(ProgressBar())
     extensions.append(Printing())
 

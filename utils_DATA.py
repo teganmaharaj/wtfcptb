@@ -445,8 +445,9 @@ def get_ptb_stream(which_set, batch_size, length, drop_prob_states, drop_prob_ce
     return ds
 
 def get_noised_stream(which_set, batch_size, length, drop_prob_states, drop_prob_cells, drop_prob_igates,
-                      hidden_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, for_evaluation, num_examples=None, augment=True):
-    noised_dataset = PTB(which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, num_examples=None, length=length, augment=augment)
+                      hidden_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, 
+                      percent_of_data, for_evaluation, num_examples=None, augment=True):
+    noised_dataset = PTB(which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, num_examples, length=length, augment=augment)
     if num_examples is None or num_examples > noised_dataset.num_examples:
         num_examples = noised_dataset.num_examples
     stream = fuel.streams.DataStream.default_stream(

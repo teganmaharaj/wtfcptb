@@ -346,9 +346,15 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
         dev_stream = get_static_mask_ptb_stream(
             'valid', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, True, augment=augment)
     else:
-        train_stream = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, num_examples, False, augment=augment)
-        train_stream_evaluation = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, num_examples, True, augment=augment)
-        dev_stream = get_noised_stream('valid', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, num_examples, True, augment=augment)
+        train_stream = get_noised_stream('train', batch_size, seq_len, 
+                                         drop_prob_states, drop_prob_cells, drop_prob_igates, 
+                                         state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, 
+                                         percent_of_data, False, num_examples=num_examples, augment=augment)
+        train_stream_evaluation = get_noised_stream('train', batch_size, seq_len, 
+                                                    drop_prob_states, drop_prob_cells, drop_prob_igates, 
+                                                    state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, 
+                                                    percent_of_data,True,  num_examples=num_examples, augment=augment)
+        dev_stream = get_noised_stream('valid', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, True, num_examples=None, augment=augment)
     #turn back on for sanity check
     #else:
        #train_stream = get_ptb_stream(

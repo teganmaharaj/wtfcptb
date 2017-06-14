@@ -1,100 +1,100 @@
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=101
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=103
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=107
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=109
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=113
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=127
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=131
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=137
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=139
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=149
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=151
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=157
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=163
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=167
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=173
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=179
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=181
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=191
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=193
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=197
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=199
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=211
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=223
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=227
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=229
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=233
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=239
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=241
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=251
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=257
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=263
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=269
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=271
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=277
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=281
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=283
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=293
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=307
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=311
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=313
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=317
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=331
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=337
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=347
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=349
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=353
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=359
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=367
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=373
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=379
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=383
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=389
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=397
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=401
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=409
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=419
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=421
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=431
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=433
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=439
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=443
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=449
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=457
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=461
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=463
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=467
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=479
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=487
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=491
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=499
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=503
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=509
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=521
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=523
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=541
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=547
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=557
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=563
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=569
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=571
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=577
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=587
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=593
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=599
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=601
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=607
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=613
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=617
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=619
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=631
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=641
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=643
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=647
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=653
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=659
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=661
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=673
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=677
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=683
-smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --state_dim=1000 --percent_of_data=1000 --batch_size=1000 --seed=691
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=101
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=103
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=107
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=109
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=113
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=127
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=131
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=137
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=139
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=149
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=151
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=157
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=163
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=167
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=173
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=179
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=181
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=191
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=193
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=197
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=199
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=211
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=223
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=227
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=229
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=233
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=239
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=241
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=251
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=257
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=263
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=269
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=271
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=277
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=281
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=283
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=293
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=307
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=311
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=313
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=317
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=331
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=337
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=347
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=349
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=353
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=359
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=367
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=373
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=379
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=383
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=389
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=397
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=401
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=409
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=419
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=421
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=431
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=433
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=439
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=443
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=449
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=457
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=461
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=463
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=467
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=479
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=487
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=491
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=499
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=503
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=509
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=521
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=523
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=541
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=547
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=557
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=563
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=569
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=571
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=577
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=587
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=593
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=599
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=601
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=607
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=613
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=617
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=619
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=631
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=641
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=643
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=647
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=653
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=659
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=661
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=673
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=677
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=683
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/onethousand.py  --seed=691

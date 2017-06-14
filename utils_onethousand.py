@@ -160,7 +160,7 @@ class PTB(fuel.datasets.Dataset):
     provides_sources = ('features','targets')
     example_iteration_scheme = None
 
-    def __init__(self, which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, num_examples, length, augment=False):
+    def __init__(self, which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, length, num_examples=None,  augment=False):
         self.which_set = which_set
         self.length = length
         self.augment = augment
@@ -169,7 +169,7 @@ class PTB(fuel.datasets.Dataset):
         self.Y_noise = Y_noise
         self.rng = rng
         self.X_noise_type = X_noise_type 
-        self.Y_noise_type = Y_noise_type 
+        self.Y_noise_type = Y_noise_type
         if self.augment:
             print "too much random! not doing augmentation."
             # -1 so we have one self.length worth of room for augmentation
@@ -446,12 +446,12 @@ def get_ptb_stream(which_set, batch_size, length, drop_prob_states, drop_prob_ce
 
 def get_noised_stream(which_set, batch_size, length, drop_prob_states, drop_prob_cells, drop_prob_igates,
                       hidden_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, for_evaluation, num_examples=None, augment=True):
-    noised_dataset = PTB(which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, num_examples=None, length=length, augment=augment)
+    noised_dataset = PTB(which_set, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, length=length, num_examples=num_examples,  augment=augment)
     if num_examples is None or num_examples > noised_dataset.num_examples:
         num_examples = noised_dataset.num_examples
     stream = fuel.streams.DataStream.default_stream(
         noised_dataset,
-        iteration_scheme=fuel.schemes.ShuffledScheme(num_examples, batch_size))
+        iteration_scheme=fuel.schemes.SequentialScheme(num_examples, batch_size))
     ds = SampleDropsPTBnoised(stream, drop_prob_states, drop_prob_cells, drop_prob_igates, hidden_dim, for_evaluation)
     ds.sources = ('features', 'targets', 'drops_states', 'drops_cells', 'drops_igates')
     return ds

@@ -301,9 +301,10 @@ class DropBidirectionalGraves(Initializable):
 
 class DropGRU(BaseRecurrent, Initializable):
     @lazy(allocation=['dim'])
-    def __init__(self, dim, activation=None, gate_activation=None, **kwargs):
+    def __init__(self, dim, rng, activation=None, gate_activation=None, **kwargs):
         self.dim = dim
-
+        self.rng = rng
+        
         if not activation:
             activation = Tanh()
         if not gate_activation:
@@ -379,11 +380,12 @@ class DropGRU(BaseRecurrent, Initializable):
 
 class DropLSTM(BaseRecurrent, Initializable):
     @lazy(allocation=['dim'])
-    def __init__(self, dim, activation=None, gate_activation=None,
+    def __init__(self, dim, rng, activation=None, gate_activation=None,
                  model_type=6, ogates_zoneout=False, **kwargs):
         self.dim = dim
         self.model_type = model_type
         self.ogates_zoneout = ogates_zoneout
+        self.rng = rng
 
         if not activation:
             activation = Tanh()
@@ -489,8 +491,9 @@ class DropLSTM(BaseRecurrent, Initializable):
 
 class DropSimpleRecurrent(BaseRecurrent, Initializable):
     @lazy(allocation=['dim'])
-    def __init__(self, dim, activation, **kwargs):
+    def __init__(self, dim, rnn, activation, **kwargs):
         self.dim = dim
+        self.rng = rng
         children = [activation] + kwargs.get('children', [])
         super(DropSimpleRecurrent, self).__init__(children=children, **kwargs)
 

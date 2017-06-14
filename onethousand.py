@@ -11,7 +11,7 @@ import theano
 import theano.tensor as T
 
 
-from utils_DATA import get_ptb_stream, get_static_mask_ptb_stream, get_noised_stream
+from utils_onethousand import get_ptb_stream, get_static_mask_ptb_stream, get_noised_stream
 
 
 from blocks.algorithms import (GradientDescent, StepClipping, CompositeRule,
@@ -102,7 +102,7 @@ def parse_args():
                         default=0,
                         help='Number of attention layers except labels layer')
     parser.add_argument('--epochs', type=int,
-                        default=2000,
+                        default=1,
                         help='Number of epochs')
     parser.add_argument('--seed', type=int,
                         default=123,
@@ -233,15 +233,17 @@ def parse_args():
     parser.add_argument('--Y_noise', type=float, default=0, help="e.g. 0.5 means 50% of labels  will be noise")
     parser.add_argument('--X_noise_type', type=str, default='char', help="options are seq and char")
     parser.add_argument('--Y_noise_type', type=str, default='char', help="options are seq and char")
-    parser.add_argument('--percent_of_data', type=str, default='100', help="percentage of data used (i.e. use a subset of the data), starts from beginning")
-    parser.add_argument('--num_examples', type=int, default=None, help="number of examples to train on")
+    parser.add_argument('--percent_of_data', type=str, default='100', help="percentage of data used (i.e. use a subset of the data), starts from beginning. IF greater than 100, is the NUMBER of examples to use.")
+    parser.add_argument('--burnin', type=int, default=0, help="Number of timesteps to wait before evaluating accuracy") #NOT USED
+    parser.add_argument('--times', type=int, default=100, help="Number of times to train")
+
     return parser.parse_args()
 
 
 def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
           seed, pretrain_alignment, uniform_alignment, dropout,
           beam_search, test_cost, experiment_path, window_features,
-          features, pool_size, maximum_frames, initialization, weight_noise, percent_of_data, num_examples,
+          features, pool_size, maximum_frames, initialization, weight_noise, percent_of_data, burnin,
           to_watch, patience, plot, write_predictions, static_mask, X_noise, Y_noise, X_noise_type, Y_noise_type,
           drop_prob, drop_prob_states, drop_prob_cells, drop_prob_igates, ogates_zoneout, batch_size,
           stoch_depth, share_mask, gaussian_drop, rnn_type, num_layers, norm_cost_coeff, penalty, seq_len, input_drop, augment,
@@ -344,11 +346,11 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
         train_stream_evaluation = get_static_mask_ptb_stream(
             'train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, True, augment=augment)
         dev_stream = get_static_mask_ptb_stream(
-            'valid', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, True, augment=augment)
+            'train', 100, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, True, augment=augment)
     else:
-        train_stream = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, num_examples, False, augment=augment)
-        train_stream_evaluation = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, num_examples, True, augment=augment)
-        dev_stream = get_noised_stream('valid', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, num_examples, True, augment=augment)
+        train_stream = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, False, augment=augment)
+        train_stream_evaluation = get_noised_stream('train', batch_size, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, True, augment=augment)
+        dev_stream = get_noised_stream('train', 100, seq_len, drop_prob_states, drop_prob_cells, drop_prob_igates, state_dim, X_noise, Y_noise, rng, X_noise_type, Y_noise_type, percent_of_data, True, num_examples=1000, augment=augment)
     #turn back on for sanity check
     #else:
        #train_stream = get_ptb_stream(
@@ -434,15 +436,15 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
     if rnn_type.lower()=='lstm':
         in_to_hid = Linear(50, state_dim*4, name='in_to_hid',
                        weights_init=weights_init, biases_init=Constant(0.0))
-        recurrent_layer = DropLSTM(dim=state_dim, weights_init=weights_init, activation=Tanh(), model_type=6, name='rnn', rng=rng, ogates_zoneout=ogates_zoneout)
+        recurrent_layer = DropLSTM(dim=state_dim, weights_init=weights_init, activation=Tanh(), model_type=6, name='rnn', ogates_zoneout=ogates_zoneout, rng=rng)
     elif rnn_type.lower()=='gru':
         in_to_hid = Linear(50, state_dim*3, name='in_to_hid',
                        weights_init=weights_init, biases_init=Constant(0.0))
-        recurrent_layer = DropGRU(dim=state_dim, weights_init=weights_init, activation=Tanh(), rng=rng, name='rnn')
+        recurrent_layer = DropGRU(dim=state_dim, weights_init=weights_init, activation=Tanh(), name='rnn', rng=rng)
     elif rnn_type.lower()=='srnn': #FIXME!!! make ReLU
         in_to_hid = Linear(50, state_dim, name='in_to_hid',
                        weights_init=weights_init, biases_init=Constant(0.0))
-        recurrent_layer = DropSimpleRecurrent(dim=state_dim, weights_init=weights_init, activation=Rectifier(), rng=rng, name='rnn')
+        recurrent_layer = DropSimpleRecurrent(dim=state_dim, weights_init=weights_init, activation=Rectifier(), name='rnn', rng=rng)
     else:
         raise NotImplementedError
     
@@ -710,8 +712,8 @@ def train(step_rule, input_dim, state_dim, label_dim, layers, epochs,
     fh.setLevel(logging.DEBUG)
     logger.addHandler(fh)
 
-    extensions.append(SaveParams('dev_nll_cost', model, experiment_path,
-                                 every_n_epochs=1))
+    #extensions.append(SaveParams('dev_nll_cost', model, experiment_path,
+    #                             every_n_epochs=1))
     extensions.append(SaveLog(every_n_epochs=1, before_first_epoch=True))
     #extensions.append(ProgressBar())
     extensions.append(Printing())
@@ -746,6 +748,5 @@ if __name__ == '__main__':
     with open (os.path.join(experiment_path,'exp_params.txt'), 'w') as f:
         for key in sorted(argsdict):
             f.write(key+'\t'+str(argsdict[key])+'\n')
-            
     step_rule = learning_algorithm(args)
     train(step_rule, **args.__dict__)

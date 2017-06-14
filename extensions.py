@@ -15,8 +15,12 @@ class SaveLog(SimpleExtension):
         current_row = self.main_loop.log.current_row
         logger.info("\nIter:%d" % epoch)
         for element in current_row:
-            logger.info(str(element) + ":%f" % current_row[element])
-
+            #kind of hacky?
+            try:
+                float(current_row[element])
+                logger.info(str(element) + ":%f" % current_row[element])
+            except TypeError:
+                logger.info(str(element) +": "+ str(current_row[element]))
 
 class SaveParams(SimpleExtension):
     """Finishes the training process when triggered."""

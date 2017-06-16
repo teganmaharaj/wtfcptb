@@ -1,0 +1,21 @@
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --x_noise=1 --x_noise_type=seq --drop_prob_cells=0.5 --drop_prob_states=0.95
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --x_noise=1 --x_noise_type=seq --norm_cost_coeff=50
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --x_noise=1 --x_noise_type=seq --weight_noise=0.075
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --y_noise=1 --y_noise_type=seq --drop_prob_cells=0.5 --drop_prob_states=0.95
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --y_noise=1 --y_noise_type=seq --norm_cost_coeff=50
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --y_noise=1 --y_noise_type=seq --weight_noise=0.075
+
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --x_noise=0.5 --x_noise_type=seq --drop_prob_cells=0.5 --drop_prob_states=0.95
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --x_noise=0.5 --x_noise_type=seq --norm_cost_coeff=50
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --x_noise=0.5 --x_noise_type=seq --weight_noise=0.075
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --y_noise=0.5 --y_noise_type=seq --drop_prob_cells=0.5 --drop_prob_states=0.95
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --y_noise=0.5 --y_noise_type=seq --norm_cost_coeff=50
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py --y_noise=0.5 --y_noise_type=seq --weight_noise=0.075
+
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py  --drop_prob_cells=0.5 --drop_prob_states=0.95
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py  --norm_cost_coeff=50
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py  --weight_noise=0.075
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py  --drop_prob_cells=0.5 --drop_prob_states=0.95
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py  --norm_cost_coeff=50
+smart-dispatch --walltime=12:00:00 --queue=@hades launch THEANO_FLAGS=device=gpu,floatX=float32 python /RQusagers/maharajt/wtfcptb/zoneout_char_ptb_DATA_NOISE.py  --weight_noise=0.075
+
